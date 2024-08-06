@@ -1,0 +1,210 @@
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInFade {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes hueRotate {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+  
+  @keyframes sheen {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  :root {
+    --primary-color: #4a47a3; /* Primary color */
+    --secondary-color: #ff6b6b; /* Secondary color */
+    --background-color: #f0f0f0; /* Background color */
+    --text-color: #333; /* Text color */
+    --border-radius: 10px; /* Border radius */
+    --box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Box shadow */
+    --input-padding: 14px; /* Input padding */
+    --button-padding: 12px 24px; /* Button padding */
+    --completed-color: #b2b2b2; /* Completed task color */
+    --transition-speed: 0.3s; /* Transition speed */
+    --glowing-yellow: #f7b731; /* Light glowing yellow */
+    --glowing-green: #20bf6b; /* Light glowing green */
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .todo-container {
+    background: white;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 500px;
+    animation: fadeIn 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  .task-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+    transition: background-color var(--transition-speed);
+    box-shadow: var(--box-shadow);
+    animation: slideInFade 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+    opacity: 0;
+  }
+  
+  .task-list li.completed {
+    background-color: #f0f0f0;
+  }
+  
+  .task-list li span {
+    cursor: pointer;
+    flex: 1;
+  }
+  
+  .task-list li button {
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color var(--transition-speed);
+  }
+  
+  .task-list li button:hover {
+    background-color: darken(var(--secondary-color), 10%);
+  }
+  
+  .input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  input {
+    flex: 1;
+    padding: var(--input-padding);
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: var(--border-radius);
+    margin-right: 10px;
+    transition: border-color var(--transition-speed);
+  }
+  
+  input:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    animation: hueRotate 5s linear infinite;
+  }
+  
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: var(--button-padding);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    box-shadow: var(--box-shadow);
+  }
+  
+  button:hover {
+    background-color: darken(var(--primary-color), 10%);
+    transform: translateY(-2px);
+  }
+  
+  button svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+  }
+  
+  @keyframes sheen {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  .add-button {
+    background-image: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 200% 200%;
+    animation: sheen 1.5s infinite linear;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: var(--box-shadow);
+  }
+  
+  .add-button:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px var(--secondary-color); /* Glowing effect on hover */
+  }
+  
+  .add-button svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--glowing-yellow), var(--glowing-green));
+    border-radius: 8px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, darken(var(--glowing-yellow), 10%), darken(var(--glowing-green), 10%));
+  }
